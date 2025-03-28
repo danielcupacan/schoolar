@@ -7,8 +7,10 @@ $lname = $_POST['l_name'];
 $email = $_POST['e_mail'];
 $passwd = $_POST['passw'];
 
-$sql = "INSERT INTO users (firstname, lastname, email, pasword)
-        values('$fname','$lname','$email','$passwd')
+$enc_pass = md5($passwd);
+
+$sql = "INSERT INTO users (firstname, lastname, email, password)
+        values('$fname','$lname','$email','$enc_pass')
 
 ";
 
