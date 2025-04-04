@@ -10,7 +10,7 @@ $passwd = $_POST['passw'];
 //$enc_pass = md5($passwd);
 $enc_pass = sha1($passwd);
 
-$sql_email_exist = " SELECT COUT(email) as total FROM users WHERE email = '$email' LIMIT 1";
+$sql_email_exist = " SELECT COUNT(email) as total FROM users WHERE email = '$email' LIMIT 1";
 $res = pg_query($conn, $sql_email_exist );
 
 if($res){
