@@ -11,23 +11,47 @@
         <link rel="icon" type="image/png" href="icon/batpepe.png">
     </head>
     <body>
-        <table border="2">
-        
-            <tr>
-                <td>Firstname</td>
-                <td>Lasttname</td>
-                <td>Email</td>
-                <td>Active</td>
-                <td>
-                    <img src = "icon\edit.png" width="50">
-                    <img src = "icon\pepe_delete.jpg" width="50">
-                    <img src = "icon\edit.png" width="50">
-                </td>
-            </tr>
-            <?php
-                //idk
-            ?>
-
-        </table>
+        <center>
+        <img src = "images\pepe hacker.jpg" width = "375"><br>
+            <table border="2">
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lasttname</th>
+                    <th>Email</th>
+                    <th>status</th>
+                    <td>...</th>
+                </tr>
+                <?php
+                    //idk
+                    $sql = "
+                    SELECT
+                        firstname,
+                        lastname,
+                        email,
+                        case when status = true then 'Active' else 'No active' end as status
+                    FROM
+                        users
+                    ";
+                    $res = pg_query($conn, $sql);
+                    if(!$res){
+                        echo "Query error";
+                        exit;
+                    }
+                    while($row = pg_fetch_assoc($res)){
+                        echo "<tr>";
+                        echo "<td>". $row['firstname'] ."</td>";
+                        echo "<td>". $row['lastname'] ."</td>";
+                        echo "<td>". $row['email'] ."</td>";
+                        echo "<td>". $row['status'] ."</td>";
+                        echo "<td>";
+                        echo "<a href=''><img src = 'icon/pepe_busca.jpg' width='50'>";
+                        echo "<a href=''><img src = 'icon/edit.png' width='50'>";
+                        echo "<a href=''><img src = 'icon/pepe_delete.jpg' width='50'>";
+                        echo "</td>";
+                         echo "</tr>";
+                    }
+                ?>
+            </table>
+        </center>
     </body>
 </html>
