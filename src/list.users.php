@@ -19,12 +19,15 @@
                     <th>Lasttname</th>
                     <th>Email</th>
                     <th>status</th>
+                    <th>photo</th>
+
                     <td>...</th>
                 </tr>
                 <?php
                     //idk
                     $sql = "
                     SELECT
+                        id,
                         firstname,
                         lastname,
                         email,
@@ -43,6 +46,7 @@
                         echo "<td>". $row['lastname'] ."</td>";
                         echo "<td>". $row['email'] ."</td>";
                         echo "<td>". $row['status'] ."</td>";
+                        echo "<td align='center'><img src='photo_users/src/photo_users/photooo.png' width='20'</td>";
                         echo "<td>";
                         echo "<a href=''><img src = 'icon/pepe_busca.jpg' width='50'>";
                         echo "<a href=''><img src = 'icon/edit.png' width='50'>";
